@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, useColorScheme, View } from "react-native";
 
-function AppPro(): JSX.Element {
+function AppOne(): JSX.Element {
     const isDarkMode = useColorScheme() === 'light';
     return (
         <View style={styles}>
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default AppPro;
+export default AppOne;
