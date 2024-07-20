@@ -11,6 +11,8 @@ export default function AppTwo(): JSX.Element {
                 <FlatCards />
                 <ElevatedCard />
                 <FancyCard />
+                <FancyCard />
+                <FancyCard />
             </ScrollView>
         </SafeAreaView>
     );
