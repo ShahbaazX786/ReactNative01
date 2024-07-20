@@ -4,6 +4,7 @@ import FlatCards from './components/appTwo/FlatCards';
 import ElevatedCard from './components/appTwo/ElevatedCard';
 import FancyCard from './components/appTwo/FancyCard';
 import ActionableCard from './components/appTwo/ActionableCard';
+import ContactList from './components/appTwo/ContactList';
 
 export default function AppTwo(): JSX.Element {
     return (
@@ -14,6 +15,7 @@ export default function AppTwo(): JSX.Element {
                 <FancyCard />
                 <FancyCard />
                 <ActionableCard />
+                <ContactList />
             </ScrollView>
         </SafeAreaView>
     );
