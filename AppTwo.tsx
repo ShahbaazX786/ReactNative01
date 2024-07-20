@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView } from 'react-native';
 import FlatCards from './components/appTwo/FlatCards';
 import ElevatedCard from './components/appTwo/ElevatedCard';
 import FancyCard from './components/appTwo/FancyCard';
+import ActionableCard from './components/appTwo/ActionableCard';
 
 export default function AppTwo(): JSX.Element {
     return (
@@ -12,7 +13,7 @@ export default function AppTwo(): JSX.Element {
                 <ElevatedCard />
                 <FancyCard />
                 <FancyCard />
-                <FancyCard />
+                <ActionableCard />
             </ScrollView>
         </SafeAreaView>
     );
