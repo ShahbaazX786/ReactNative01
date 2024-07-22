@@ -224,13 +224,13 @@ const styles = StyleSheet.create({
         color: '#ff0d10',
     },
     formActions: {
-        flex:1,
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
     },
     primaryBtn: {
         flex: 1,
-        minHeight:60,
+        minHeight: 60,
         alignItems: 'center',
         justifyContent: 'center',
         maxWidth: 150,
