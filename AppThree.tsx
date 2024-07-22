@@ -95,10 +95,27 @@ export default function AppThree() {
                                     </View>
                                     <TextInput style={styles.inputStyle} value={values.passwordLength} onChangeText={handleChange('passwordLength')} />
                                 </View>
-                                <View style={styles.inputWrapper} />
-                                <View style={styles.inputWrapper} />
-                                <View style={styles.inputWrapper} />
-                                <View style={styles.inputWrapper} />
+
+                                <View style={styles.inputWrapper} >
+                                    <Text style={styles.heading}>Include Lowercase</Text>
+                                    <BouncyCheckbox disableBuiltInState isChecked={lowerCase} onPress={() => setLowerCase(!lowerCase)} fillColor="#29AB87" />
+                                </View>
+
+                                <View style={styles.inputWrapper} >
+                                    <Text style={styles.heading}>Include Uppercase</Text>
+                                    <BouncyCheckbox disableBuiltInState isChecked={upperCase} onPress={() => setLowerCase(!upperCase)} fillColor="#FED85D" />
+                                </View>
+
+                                <View style={styles.inputWrapper} >
+                                    <Text style={styles.heading}>Include Numbers</Text>
+                                    <BouncyCheckbox disableBuiltInState isChecked={numbers} onPress={() => setLowerCase(!numbers)} fillColor="#C9A0DC" />
+                                </View>
+
+                                <View style={styles.inputWrapper} >
+                                    <Text style={styles.heading}>Include Special Characters</Text>
+                                    <BouncyCheckbox disableBuiltInState isChecked={symbols} onPress={() => setLowerCase(!symbols)} fillColor="#FC80A5" />
+                                </View>
+
                                 <View style={styles.formActions}>
                                     <TouchableOpacity>
                                         <Text>Generate Password</Text>
@@ -110,7 +127,6 @@ export default function AppThree() {
                             </>
                         )}
                     </Formik>
-
                 </View>
             </SafeAreaView>
         </ScrollView>
