@@ -243,10 +243,10 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
     secondaryBtn: {
-        flex:1,
-        alignItems:'center',
+        flex: 1,
+        alignItems: 'center',
         justifyContent: 'center',
-        maxWidth:150,
+        maxWidth: 150,
         borderRadius: 8,
         backgroundColor: '#CAD5E2',
     },
