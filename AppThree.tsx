@@ -1,8 +1,8 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import React, { useState } from 'react';
-import * as Yup from 'yup';
 import { Formik } from 'formik';
+import React, { useState } from 'react';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import * as Yup from 'yup';
 
 const passwordSchema = Yup.object().shape({
     password: Yup.number()
