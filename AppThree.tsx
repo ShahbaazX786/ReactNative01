@@ -4,11 +4,11 @@ import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import * as Yup from 'yup';
 
-const passwordSchema = Yup.object().shape({
-    password: Yup.number()
-        .min(4, 'Should be a min of 4 characters')
-        .max(16, 'Should be a max of 16 characters')
-        .required('This is a required field'),
+const PasswordSchema = Yup.object().shape({
+    passwordLength: Yup.number()
+        .min(8, 'Should be a min of 8 characters')
+        .max(255, 'Should be a max of 255 characters')
+        .required('Length is a required field'),
 });
 
 export default function AppThree() {
@@ -70,7 +70,7 @@ export default function AppThree() {
                     <Text style={styles.title}>Password Generator</Text>
                     <Formik
                         initialValues={{ passwordLength: '' }}
-                        validate={passwordSchema}
+                        validationSchema={PasswordSchema}
                         onSubmit={values => {
                             generatePassword(Number(values.passwordLength));
                         }}
@@ -224,14 +224,17 @@ const styles = StyleSheet.create({
         color: '#ff0d10',
     },
     formActions: {
+        flex:1,
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
     },
     primaryBtn: {
-        width: 120,
-        padding: 10,
+        flex: 1,
+        minHeight:60,
+        alignItems: 'center',
+        justifyContent: 'center',
+        maxWidth: 150,
         borderRadius: 8,
-        marginHorizontal: 8,
         backgroundColor: '#5DA3FA',
     },
     primaryBtnTxt: {
@@ -240,10 +243,11 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
     secondaryBtn: {
-        width: 120,
-        padding: 10,
+        flex:1,
+        alignItems:'center',
+        justifyContent: 'center',
+        maxWidth:150,
         borderRadius: 8,
-        marginHorizontal: 8,
         backgroundColor: '#CAD5E2',
     },
     secondaryBtnTxt: {
