@@ -170,7 +170,8 @@ export default function AppThree() {
                             onPress={copyToClipboard}
                         >
                             <Text style={styles.primaryBtnTxt}>copy</Text>
-                        </TouchableOpacity> */}
+                        </TouchableOpacity> */} 
+                        {/* Need to add a copy button */}
                     </View>
                 ) : null}
             </SafeAreaView>
@@ -276,3 +277,4 @@ const styles = StyleSheet.create({
         color: '#000',
     },
 });
+
