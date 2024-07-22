@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -45,7 +45,7 @@ export default function AppThree() {
         const result = createPassword(characterList, passwordLength);
         setPassword(result);
         setIsPassGenerated(true);
-    }
+    };
 
     const createPassword = (characters: string, passwordLength: number) => {
         let result = '';
@@ -71,56 +71,41 @@ export default function AppThree() {
                 <View style={styles.formContainer}>
                     <Text style={styles.title}>Password Generator</Text>
                     <Formik
-                        initialValues={{ email: '', password: '' }}
-                        validate={values => {
-                            const errors = {};
-                            if (!values.email) {
-                                errors.email = 'Required';
-                            } else if (
-                                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                            ) {
-                                errors.email = 'Invalid email address';
-                            }
-                            return errors;
-                        }}
-                        onSubmit={(values, { setSubmitting }) => {
-                            setTimeout(() => {
-                                alert(JSON.stringify(values, null, 2));
-                                setSubmitting(false);
-                            }, 400);
+                        initialValues={{ passwordLength: '' }}
+                        validate={passwordSchema}
+                        onSubmit={values => {
+                            generatePassword(Number(values.passwordLength));
                         }}
                     >
                         {({
                             values,
                             errors,
                             touched,
+                            isValid,
                             handleChange,
-                            handleBlur,
                             handleSubmit,
                             isSubmitting,
-                            /* and other goodies */
+                            handleReset,
                         }) => (
-                            <form onSubmit={handleSubmit}>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.email}
-                                />
-                                {errors.email && touched.email && errors.email}
-                                <input
-                                    type="password"
-                                    name="password"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.password}
-                                />
-                                {errors.password && touched.password && errors.password}
-                                <button type="submit" disabled={isSubmitting}>
-                                    Submit
-                                </button>
-                            </form>
+                            <>
+                                <View style={styles.inputWrapper}>
+                                    <View style={styles.inputColumn}>
+                                        <TextInput style={styles.inputStyle} value={values.passwordLength} onChangeText={handleChange('passwordLength')} />
+                                    </View>
+                                </View>
+                                <View style={styles.inputWrapper} />
+                                <View style={styles.inputWrapper} />
+                                <View style={styles.inputWrapper} />
+                                <View style={styles.inputWrapper} />
+                                <View style={styles.formActions}>
+                                    <TouchableOpacity>
+                                        <Text>Generate Password</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity>
+                                        <Text>Reset</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </>
                         )}
                     </Formik>
 
@@ -152,8 +137,4 @@ const styles = StyleSheet.create({
         color: '#758283',
         marginBottom: 8,
     },
-    heading: {
-
-    }
 });
-
