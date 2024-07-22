@@ -35,10 +35,10 @@ export default function AppThree() {
         if (lowerCase) {
             characterList += lowerCaseChars;
         }
-        if (symbols) {
+        if (numbers) {
             characterList += digits;
         }
-        if (numbers) {
+        if (symbols) {
             characterList += specialChars;
         }
 
