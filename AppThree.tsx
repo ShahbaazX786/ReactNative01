@@ -25,10 +25,10 @@ export default function AppThree() {
     const calculateEntropy = (pwd) => {
         let charSetSize = 0;
 
-        if (/[a-z]/.test(pwd)) {charSetSize += 26;} // lowercase letters
-        if (/[A-Z]/.test(pwd)) {charSetSize += 26;} // uppercase letters
-        if (/[0-9]/.test(pwd)) {charSetSize += 10;} // digits
-        if (/[^a-zA-Z0-9]/.test(pwd)) {charSetSize += 32;} // special characters
+        if (/[a-z]/.test(pwd)) {charSetSize += 26;}
+        if (/[A-Z]/.test(pwd)) {charSetSize += 26;}
+        if (/[0-9]/.test(pwd)) {charSetSize += 10;}
+        if (/[^a-zA-Z0-9]/.test(pwd)) {charSetSize += 32;}
 
         return pwd.length * Math.log2(charSetSize);
     };
@@ -37,16 +37,28 @@ export default function AppThree() {
         const guessesPerSecond = 1e12; // 1 trillion guesses per second
         const totalGuesses = Math.pow(2, entropy);
         const seconds = totalGuesses / guessesPerSecond;
+        return numberToEnglish(seconds);
+    };
 
-        if (seconds < 60) {return `${seconds.toFixed(2)} seconds`;}
-        const minutes = seconds / 60;
-        if (minutes < 60) {return `${minutes.toFixed(2)} minutes`;}
-        const hours = minutes / 60;
-        if (hours < 24) {return `${hours.toFixed(2)} hours`;}
-        const days = hours / 24;
-        if (days < 365) {return `${days.toFixed(2)} days`;}
-        const years = days / 365;
-        return `${years.toFixed(2)} years`;
+    const numberToEnglish = (number) => {
+        const units = ['seconds', 'minutes', 'hours', 'days', 'years'];
+        const values = [60, 60, 24, 365, Number.MAX_VALUE];
+        let unitIndex = 0;
+
+        while (number >= values[unitIndex] && unitIndex < units.length - 1) {
+            number /= values[unitIndex];
+            unitIndex++;
+        }
+
+        const suffixes = ['', 'thousand', 'million', 'billion', 'trillion'];
+        let suffixIndex = 0;
+
+        while (number >= 1000 && suffixIndex < suffixes.length - 1) {
+            number /= 1000;
+            suffixIndex++;
+        }
+
+        return `${number.toFixed(1)} ${suffixes[suffixIndex]} ${units[unitIndex]}`;
     };
 
 
@@ -72,10 +84,10 @@ export default function AppThree() {
 
         const result = createPassword(characterList, passwordLength);
         setPassword(result);
+        setIsPassGenerated(true);
         const entropy = calculateEntropy(result);
         const timeToCrackPassword = estimateCrackTime(entropy);
         setCrackTime(timeToCrackPassword);
-        setIsPassGenerated(true);
     };
 
     const createPassword = (characters: string, passwordLength: number) => {
@@ -199,16 +211,8 @@ export default function AppThree() {
                 </View>
                 {isPassGenerated ? (
                     <View style={[styles.card, styles.cardElevated]}>
-                        <Text style={styles.subTitle}>Your Generated Password:</Text>
                         <Text style={styles.subTitle}>Estimated Crack Time: {crackTime} </Text>
                         <Text selectable={true} style={styles.generatedPassword}>{password}</Text>
-                        {/* <TouchableOpacity
-                            style={styles.primaryBtn}
-                            onPress={copyToClipboard}
-                        >
-                            <Text style={styles.primaryBtnTxt}>copy</Text>
-                        </TouchableOpacity> */}
-                        {/* Need to add a copy button */}
                     </View>
                 ) : null}
             </SafeAreaView>
