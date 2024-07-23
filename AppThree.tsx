@@ -206,7 +206,6 @@ const styles = StyleSheet.create({
     },
     inputWrapper: {
         marginBottom: 15,
-        alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
     },
