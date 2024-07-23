@@ -1,3 +1,5 @@
+// A logical app that generates password and utilizes external libraries like formik, bouncy checkbox etc.
+
 import { Formik } from 'formik';
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';

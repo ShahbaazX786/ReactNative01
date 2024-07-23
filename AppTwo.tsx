@@ -1,3 +1,5 @@
+// Learning components, styles and folder structure in this app.
+
 import React from 'react';
 import { SafeAreaView, ScrollView } from 'react-native';
 import FlatCards from './components/appTwo/FlatCards';

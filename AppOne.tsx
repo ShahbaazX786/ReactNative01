@@ -1,3 +1,5 @@
+// Hello world like App.
+
 import React from 'react';
 import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 
